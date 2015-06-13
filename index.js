@@ -16,18 +16,18 @@ loadHtml = function(response,callback) {
 
 function getObj(html){
   var  $ = cheerio.load(html);
-  var res = [];
+  var res = {};
 
   $('tr[valign=top] td').each(function(i, elem) {
     var text = $(this).text().trim();
     if (text === "Name:"){
-      res.push({name:$(this).next().text()});
+      res.name = $(this).next().text();
     }else if(text === "Latitude:"){
-      res.push({latitude:$(this).next().text()});
+      res.latitude = $(this).next().text();
     }else if(text === "Longitude:"){
-      res.push({latitude:$(this).next().text()});
+      res.longitude = $(this).next().text();
     }else if(text === "Time Zone:"){
-      res.push({timezone:$(this).next().text()});
+      res.timezone = $(this).next().text();
     }
   });
 
