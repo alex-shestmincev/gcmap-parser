@@ -1,0 +1,20 @@
+{
+  "name": "gcmap-parser",
+  "version": "0.0.1",
+  "description": "Module to parse html at http://www.gcmap.com to find airports",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klik1301/gcmap-parser"
+  },
+  "author": {
+    "name": "Alex Shestmintsev"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  }
+}
