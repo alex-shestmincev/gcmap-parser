@@ -1,13 +1,6 @@
 var http = require('http');
 var cheerio = require('cheerio');
 
-var resultObject = {};
-
-var httpOptions = {
-  host: 'www.gcmap.com'
-  //,path: '/airport/'
-};
-
 loadHtml = function(response,callback) {
   var str = '';
 
