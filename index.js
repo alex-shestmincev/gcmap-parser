@@ -1,15 +1,27 @@
 var http = require('http');
 var cheerio = require('cheerio');
+var Iconv  = require('iconv').Iconv;
+var iconv = new Iconv('ISO-8859-1','UTF-8');
+
 
 loadHtml = function(response,callback) {
-  var str = '';
+  var chunks = [];
+  var totallength = 0;
 
   response.on('data', function (chunk) {
-    str += chunk;
+    chunks.push(chunk);
+    totallength += chunk.length;
   });
 
   response.on('end', function () {
-    var res = getObj(str);
+    var results = new Buffer(totallength);
+    var pos = 0;
+    for (var i = 0; i < chunks.length; i++) {
+      chunks[i].copy(results, pos);
+      pos += chunks[i].length;
+    }
+    var converted = iconv.convert(results);
+    var res = getObj(converted.toString('utf8'));
     callback(res);
   });
 }
